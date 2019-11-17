@@ -1,0 +1,40 @@
+<div *ngIf="products">
+    <div class="mb-4">
+        <h3 class="text-center text-info mb-4">{{title}}</h3>
+    </div>
+    <div *ngFor="let p of products._embedded.products">
+        <div class="col-md-6">
+
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    {{p.name}}
+                </div>
+                <div class="panel-body">
+
+                    <img src="{{p.photoName}}">
+                    <p>{{p.description}}</p>
+
+                    <p>{{p.currentPrice | number:'0.00'}}</p>
+
+                    <div >
+                        <p *ngIf="p.promotion" >
+                            <img style="width: 100px" src="https://www.costo.be/c/50-category_default/articles-en-promotion.jpg">
+                        </p>   
+                            
+                    </div>
+
+                    <div>
+                        <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
+                            <label class="control-label"> Quantity ! </label>
+                            <input type="number" name="quantity" ngModel style="width: 40px" [(ngModel)]="p.quantity"  [(ngModel)]="p.quantity">
+                            <button class="btn btn-success">Add</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
