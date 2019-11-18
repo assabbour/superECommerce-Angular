@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogueService } from '../catalogue.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Product } from '../model/product.model';
+import { CaddyService } from '../services/caddy.service';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +15,8 @@ export class ProductsComponent implements OnInit {
   private title:string;
 
   constructor(private catService: CatalogueService,
-    private route: ActivatedRoute, private router: Router
+    private route: ActivatedRoute, private router: Router,
+    public caddyService:CaddyService
   ) { }
 
   ngOnInit() {
@@ -68,6 +71,13 @@ export class ProductsComponent implements OnInit {
   }
 
 
+  onProductDetail(p:Product){
+    let url = btoa(p._links.product.href)
+    this.router.navigateByUrl("product-detail/"+url);
+
+  }
+
+
 
   onDeleteProduct(p){
     
@@ -75,6 +85,9 @@ export class ProductsComponent implements OnInit {
 
 
 
+  addProductToCaddy(p:Product){
+    this.caddyService.addProductToCaddy(p);
+  }
 
 
 

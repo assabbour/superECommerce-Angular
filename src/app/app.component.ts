@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CatalogueService } from './catalogue.service';
 import { Router} from '@angular/router';
 import { AuthentificationService } from './services/authentification.service';
+import { CaddyService } from './services/caddy.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit{
 
   constructor(private catService: CatalogueService,
     private router:Router,
-    private authService: AuthentificationService
+    private authService: AuthentificationService,
+    private caddyService:CaddyService
     ){
 
   }

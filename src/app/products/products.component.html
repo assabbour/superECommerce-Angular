@@ -16,19 +16,26 @@
 
                     <p>{{p.currentPrice | number:'0.00'}}</p>
 
-                    <div >
-                        <p *ngIf="p.promotion" >
-                            <img style="width: 100px" src="https://www.costo.be/c/50-category_default/articles-en-promotion.jpg">
-                        </p>   
-                            
+                    <div>
+                        <p *ngIf="p.promotion">
+                            <img style="width: 100px"
+                                src="https://www.costo.be/c/50-category_default/articles-en-promotion.jpg">
+                        </p>
+
                     </div>
 
                     <div>
                         <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
                             <label class="control-label"> Quantity ! </label>
-                            <input type="number" name="quantity" ngModel style="width: 40px" [(ngModel)]="p.quantity"  [(ngModel)]="p.quantity">
-                            <button class="btn btn-success">Add</button>
+                            <input type="number" name="quantity" ngModel style="width: 40px" [(ngModel)]="p.quantity"
+                                [(ngModel)]="p.quantity">
+                            <button class="btn btn-success" (click)="addProductToCaddy(p)">Add</button>
                         </form>
+                    </div>
+                    <div>
+                        <a class="btn btn_info " (click)="onProductDetail(p)">
+                            detail product
+                        </a>
                     </div>
 
                 </div>

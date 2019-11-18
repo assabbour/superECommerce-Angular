@@ -1,0 +1,50 @@
+
+
+
+<div *ngIf="currentproduct">
+        <div class="mb-4">
+            <h3 class="text-center text-info mb-4">{{title}}</h3>
+        </div>
+        <div>
+            <div class="col-md-12">
+    
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        {{currentproduct.name}}
+                    </div>
+                    
+                    <div class="panel-body row">
+                            <div class="col-md-6">
+                        <img src="{{currentproduct.photoName}}">
+                        </div>
+                        <div class="col-md-6">
+                        <p>{{currentproduct.description}}</p>
+    
+                        <p>{{currentproduct.currentPrice | number:'0.00'}}</p>
+    
+                        <div>
+                            <p *ngIf="currentproduct.promotion">
+                                <img style="width: 100px"
+                                    src="https://www.costo.be/c/50-category_default/articles-en-promotion.jpg">
+                            </p>
+    
+                        </div>
+    
+                        <div>
+                            <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
+                                <label class="control-label"> Quantity ! </label>
+                                <input type="number" name="quantity" ngModel style="width: 40px" [(ngModel)]="currentproduct.quantity"
+                                    [(ngModel)]="currentproduct.quantity">
+                                <button class="btn btn-success" (click)="addProductToCaddy(p)">Add</button>
+                            </form>
+                        </div>
+                      
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    
+    </div>
